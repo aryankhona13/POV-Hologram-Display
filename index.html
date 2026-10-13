@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POV 3D Hologram Display | Aryan Khona</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-wrap">
+      <a href="#" class="brand">
+        <div class="brand-logo">POV</div>
+        <div class="brand-text">
+          <h1>POV HOLOGRAM</h1>
+          <span>ESP8266 v4 System</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">Overview</a></li>
+        <li><a href="#outputs">Outputs</a></li>
+        <li><a href="#circuit">Circuit Diagram</a></li>
+        <li><a href="#modes">Dashboard Modes</a></li>
+        <li><a href="#structure">Hardware</a></li>
+        <li><a href="#tech-specs">Tech Specs</a></li>
+        <li><a href="#downloads" class="btn-nav">Downloads</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero" id="about">
+    <div class="container">
+      <div class="badge-pill">
+        <span class="pulse-dot"></span>
+        <span>Version 4.0 Firmware &amp; Dynamic Ticker Online</span>
+      </div>
+      <h1>High-Speed POV Hologram Display</h1>
+      <p>
+        An advanced electro-mechanical Persistence of Vision display powered by an ESP8266 @ 160MHz, dual WS2812B addressable RGB strips, Hall-effect magnetic sync, and an interactive Wi-Fi dashboard.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#outputs" class="btn btn-primary">
+          <i class="fa-solid fa-eye"></i> View Live Outputs
+        </a>
+        <a href="#downloads" class="btn btn-secondary">
+          <i class="fa-solid fa-download"></i> Get Source &amp; Report
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-val">900–1300</div>
+          <div class="stat-lbl">Operating RPM</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val">160 MHz</div>
+          <div class="stat-lbl">ESP8266 Overclock</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val">8 Modes</div>
+          <div class="stat-lbl">Text, Clocks, Ticker</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val">Dual Blade</div>
+          <div class="stat-lbl">16 Addressable LEDs</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Holographic Output Showcase -->
+  <section class="section" id="outputs">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">Visual Demonstration</span>
+        <h2 class="section-title">Holographic Output Gallery</h2>
+        <p class="section-desc">
+          Captured in real-time under high-speed rotation. The human retina integrates the microsecond LED flashes into continuous, vibrant mid-air floating graphics.
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+        <!-- op1: Mode 1 - Text & Scrolling Text (GECR) -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrap" onclick="openLightbox('assets/images/op_1.jpg')">
+            <img src="assets/images/op_1.jpg" alt="POV Output Text Mode" loading="lazy">
+          </div>
+          <div class="gallery-body">
+            <h3 class="gallery-title">Mode 1: Text &amp; Scrolling Text</h3>
+            <p class="gallery-desc">Alphanumeric text rendering showing custom text &ldquo;GECR&rdquo; floating in rotation.</p>
+          </div>
+        </div>
+
+        <!-- op2: Mode 3 - Canvas Editor (Smiley) -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrap" onclick="openLightbox('assets/images/op_2.jpg')">
+            <img src="assets/images/op_2.jpg" alt="POV Output Canvas Mode" loading="lazy">
+          </div>
+          <div class="gallery-body">
+            <h3 class="gallery-title">Mode 3: Canvas Drawing Mode</h3>
+            <p class="gallery-desc">User-drawn custom graphics example showing a concentric Smiley Face created via the web canvas.</p>
+          </div>
+        </div>
+
+        <!-- op3: Mode 4 - Digital Watch (Real-time data) -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrap" onclick="openLightbox('assets/images/op_3.jpg')">
+            <img src="assets/images/op_3.jpg" alt="POV Output Digital Watch" loading="lazy">
+          </div>
+          <div class="gallery-body">
+            <h3 class="gallery-title">Mode 4: Digital Watch Mode</h3>
+            <p class="gallery-desc">Real-time digital clock display showing synchronized time data (&ldquo;5:31:38&rdquo;) with seconds.</p>
+          </div>
+        </div>
+
+        <!-- op4: Mode 5 - Analog Watch -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrap" onclick="openLightbox('assets/images/op_4.jpg')">
+            <img src="assets/images/op_4.jpg" alt="POV Output Analog Watch" loading="lazy">
+          </div>
+          <div class="gallery-body">
+            <h3 class="gallery-title">Mode 5: Analog Watch Mode</h3>
+            <p class="gallery-desc">Real-time virtual clock dial rendered with hours, minutes, and sweeping second hands.</p>
+          </div>
+        </div>
+
+        <!-- op5: Mode 6 - Date & Month (13 OCT) -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrap" onclick="openLightbox('assets/images/op_5.jpg')">
+            <img src="assets/images/op_5.jpg" alt="POV Output Date & Month" loading="lazy">
+          </div>
+          <div class="gallery-body">
+            <h3 class="gallery-title">Mode 6: Date &amp; Month Display</h3>
+            <p class="gallery-desc">Real-time calendar output showing date and month readout (&ldquo;13 OCT&rdquo;).</p>
+          </div>
+        </div>
+
+        <!-- op6: Mode 6 - Day of Week (TUE) -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrap" onclick="openLightbox('assets/images/op_6.jpg')">
+            <img src="assets/images/op_6.jpg" alt="POV Output Day of Week" loading="lazy">
+          </div>
+          <div class="gallery-body">
+            <h3 class="gallery-title">Mode 6: Day of Week Display</h3>
+            <p class="gallery-desc">Automatic alternation in calendar mode showing 3-letter weekday abbreviation (&ldquo;TUE&rdquo;).</p>
+          </div>
+        </div>
+
+        <!-- op7: Mode 7 - Shapes (Heart) -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrap" onclick="openLightbox('assets/images/op_7.jpg')">
+            <img src="assets/images/op_7.jpg" alt="POV Output Heart Shape" loading="lazy">
+          </div>
+          <div class="gallery-body">
+            <h3 class="gallery-title">Mode 7: Shapes Mode (Heart)</h3>
+            <p class="gallery-desc">Parametric vector graphics displaying the animated Heart shape with dynamic scale control.</p>
+          </div>
+        </div>
+
+        <!-- op8: Mode 7 - Shapes (Smiley Face) -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrap" onclick="openLightbox('assets/images/op_8.jpg')">
+            <img src="assets/images/op_8.jpg" alt="POV Output Smiley Shape" loading="lazy">
+          </div>
+          <div class="gallery-body">
+            <h3 class="gallery-title">Mode 7: Shapes Mode (Smiley)</h3>
+            <p class="gallery-desc">Parametric vector graphics displaying the Smiley Face shape switching after heart transition.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Complete Circuit Diagram Section -->
+  <section class="section" id="circuit">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">Schematic &amp; Connections</span>
+        <h2 class="section-title">Complete Circuit Diagram</h2>
+        <p class="section-desc">
+          Full dual-stage electrical wiring showing the high-speed rotor subsystem (NodeMCU, dual WS2812 strips, A3144 Hall sensor, 10k divider) and independent motor power circuit.
+        </p>
+      </div>
+
+      <div class="specs-table-card" style="padding: 24px; text-align: center; margin-bottom: 30px;">
+        <div style="background: #040810; border-radius: 14px; padding: 12px; border: 1px solid var(--border); cursor: pointer;" onclick="openLightbox('assets/images/circuit_diagram.png')">
+          <img src="assets/images/circuit_diagram.png" alt="POV Hologram Circuit Diagram" style="max-width: 100%; height: auto; border-radius: 8px; display: block; margin: 0 auto;" loading="lazy">
+        </div>
+        <p style="margin-top: 14px; font-size: 13px; color: var(--text-muted);">
+          <i class="fa-solid fa-magnifying-glass-plus" style="color: var(--cyan); margin-right: 6px;"></i> Click the diagram above to inspect full resolution view.
+        </p>
+      </div>
+
+      <!-- Circuit Breakdown Cards -->
+      <div class="gallery-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+        <div class="feature-box" style="margin-bottom: 0;">
+          <h4><i class="fa-solid fa-rotate" style="color: var(--cyan);"></i> Motor Subsystem (Stator)</h4>
+          <p>Powered by a 4.2V Li-ion battery routed through an ON/OFF switch, TP4056 charging module, and 1N4007 protection diode to drive the 3.5V high-RPM DC motor. A stationary magnet triggers the sensor on each pass.</p>
+        </div>
+
+        <div class="feature-box" style="margin-bottom: 0;">
+          <h4><i class="fa-solid fa-microchip" style="color: var(--indigo);"></i> Rotor Subsystem (Armature)</h4>
+          <p>Powered by an independent 4.2V Li-ion battery with its own TP4056 charger and switch. Steps through a 1N4007 diode down to ~3.5V supplying the NodeMCU ESP8266 and WS2812 strips directly.</p>
+        </div>
+
+        <div class="feature-box" style="margin-bottom: 0;">
+          <h4><i class="fa-solid fa-magnet" style="color: var(--emerald);"></i> A3144 Hall Sensor</h4>
+          <p>Connected to +Vcc, GND, and GPIO13 (D7). Sends exactly 1 ground pulse per revolution to the ESP8266 external interrupt for microsecond-precise zero-degree alignment and RPM calculation.</p>
+        </div>
+
+        <div class="feature-box" style="margin-bottom: 0;">
+          <h4><i class="fa-solid fa-battery-half" style="color: var(--amber);"></i> 10k&Omega; Voltage Divider</h4>
+          <p>Two 10k&Omega; resistors form a precise 1:1 voltage divider connected to pin A0 (ADC0), stepping battery voltage safely into the 0–1.0V/3.3V ADC range for real-time percentage monitoring.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Web Dashboard Showcase -->
+  <section class="section" id="modes">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">On-Rotor Web Interface</span>
+        <h2 class="section-title">ESP8266 Web Dashboard &amp; Modes</h2>
+        <p class="section-desc">
+          Hosted locally on the ESP8266 web server. Controls all display modes, color palettes, real-time clock synchronization, speed calibration, and OTA updates over Wi-Fi.
+        </p>
+      </div>
+
+      <div class="modes-grid">
+        <!-- Sentence Mode -->
+        <div class="mode-card">
+          <div class="mode-preview" onclick="openLightbox('assets/images/POV_Hologram_DashBoard_Sentence_Mode_image-1.jpg')">
+            <img src="assets/images/POV_Hologram_DashBoard_Sentence_Mode_image-1.jpg" alt="Sentence Mode Dashboard" loading="lazy">
+          </div>
+          <div class="mode-content">
+            <span class="mode-badge">New in v4</span>
+            <h3 class="mode-title">Sentence Mode (Ticker)</h3>
+            <p class="mode-desc">Continuous scrolling for sentences up to 100 characters. Configure start angle (0°), end angle (270°), scroll direction, and dynamic rainbow hue cycling.</p>
+            <div class="mode-tags">
+              <span class="mode-tag">100 Chars</span>
+              <span class="mode-tag">Aperture Window</span>
+              <span class="mode-tag">Rainbow FX</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text Mode -->
+        <div class="mode-card">
+          <div class="mode-preview" onclick="openLightbox('assets/images/POV_Hologram_DashBoard_Text_Mode_image-1.jpg')">
+            <img src="assets/images/POV_Hologram_DashBoard_Text_Mode_image-1.jpg" alt="Text Mode Dashboard" loading="lazy">
+          </div>
+          <div class="mode-content">
+            <span class="mode-badge">Core Engine</span>
+            <h3 class="mode-title">Text Mode</h3>
+            <p class="mode-desc">Custom alphanumeric message rendering with dynamic letter limits, adjustable letter gap (1–4 columns), scroll speed, and automatic ghosting blanking.</p>
+            <div class="mode-tags">
+              <span class="mode-tag">5x5 Font</span>
+              <span class="mode-tag">No Ghosting</span>
+              <span class="mode-tag">Hold Timer</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Canvas Mode -->
+        <div class="mode-card">
+          <div class="mode-preview" onclick="openLightbox('assets/images/POV_Hologram_DashBoard_Canvas_Mode_image-1.jpg')">
+            <img src="assets/images/POV_Hologram_DashBoard_Canvas_Mode_image-1.jpg" alt="Canvas Mode Dashboard" loading="lazy">
+          </div>
+          <div class="mode-content">
+            <span class="mode-badge">Interactive Editor</span>
+            <h3 class="mode-title">Canvas Pixel Editor</h3>
+            <p class="mode-desc">Full 100-column circular drawing board supporting Flat and Polar grid views, multi-color pen, erase tool, flood fill, and instant EEPROM saving.</p>
+            <div class="mode-tags">
+              <span class="mode-tag">100 Columns</span>
+              <span class="mode-tag">Polar &amp; Flat</span>
+              <span class="mode-tag">EEPROM Saved</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Analog Watch -->
+        <div class="mode-card">
+          <div class="mode-preview" onclick="openLightbox('assets/images/POV_Hologram_DashBoard_AnalogWatch_Mode_image-1.jpg')">
+            <img src="assets/images/POV_Hologram_DashBoard_AnalogWatch_Mode_image-1.jpg" alt="Analog Watch Dashboard" loading="lazy">
+          </div>
+          <div class="mode-content">
+            <span class="mode-badge">Time Sync</span>
+            <h3 class="mode-title">Analog Watch Mode</h3>
+            <p class="mode-desc">Realistic clock face rendering hour hand, minute hand, sweeping seconds, and customizable radial dial ticks in independent RGB colors.</p>
+            <div class="mode-tags">
+              <span class="mode-tag">Sweep Hand</span>
+              <span class="mode-tag">Dial Ticks</span>
+              <span class="mode-tag">Phone Sync</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digital Watch -->
+        <div class="mode-card">
+          <div class="mode-preview" onclick="openLightbox('assets/images/POV_Hologram_DashBoard_DigitalWatch_Mode_image-1.jpg')">
+            <img src="assets/images/POV_Hologram_DashBoard_DigitalWatch_Mode_image-1.jpg" alt="Digital Watch Dashboard" loading="lazy">
+          </div>
+          <div class="mode-content">
+            <span class="mode-badge">Time Sync</span>
+            <h3 class="mode-title">Digital Watch Mode</h3>
+            <p class="mode-desc">12/24 hour digital time readout with configurable second counter, digit spacing, and independent color assignments for hours, minutes, and colon.</p>
+            <div class="mode-tags">
+              <span class="mode-tag">12h / 24h</span>
+              <span class="mode-tag">Seconds Toggle</span>
+              <span class="mode-tag">Timezone Offset</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shapes Mode -->
+        <div class="mode-card">
+          <div class="mode-preview" onclick="openLightbox('assets/images/POV_Hologram_DashBoard_Shapes_Mode_image-1-1.jpg')">
+            <img src="assets/images/POV_Hologram_DashBoard_Shapes_Mode_image-1-1.jpg" alt="Shapes Mode Dashboard" loading="lazy">
+          </div>
+          <div class="mode-content">
+            <span class="mode-badge">Vector Graphic</span>
+            <h3 class="mode-title">Shapes &amp; Icons Mode</h3>
+            <p class="mode-desc">Parametric graphics engine rendering hearts and smiley faces. Features 0.5x to 2.0x horizontal/vertical scaling sliders and automated icon rotation.</p>
+            <div class="mode-tags">
+              <span class="mode-tag">Heart Vector</span>
+              <span class="mode-tag">Smiley Face</span>
+              <span class="mode-tag">Scale Sliders</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Date & Day -->
+        <div class="mode-card">
+          <div class="mode-preview" onclick="openLightbox('assets/images/POV_Hologram_DashBoard_DateDay_Mode_image-1.jpg')">
+            <img src="assets/images/POV_Hologram_DashBoard_DateDay_Mode_image-1.jpg" alt="Date & Day Dashboard" loading="lazy">
+          </div>
+          <div class="mode-content">
+            <span class="mode-badge">Calendar</span>
+            <h3 class="mode-title">Date &amp; Day Mode</h3>
+            <p class="mode-desc">Automated transitions between 3-letter weekday abbreviations (e.g. MON, TUE) and date/month readouts with independent word and letter gap sliders.</p>
+            <div class="mode-tags">
+              <span class="mode-tag">Auto Alternate</span>
+              <span class="mode-tag">Word Gap</span>
+              <span class="mode-tag">Day/Month Colors</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Auto Mode Carousel -->
+        <div class="mode-card">
+          <div class="mode-preview" onclick="openLightbox('assets/images/POV_Hologram_DashBoard_Auto_Mode_image-1.jpg')">
+            <img src="assets/images/POV_Hologram_DashBoard_Auto_Mode_image-1.jpg" alt="Auto Mode Dashboard" loading="lazy">
+          </div>
+          <div class="mode-content">
+            <span class="mode-badge">Automation</span>
+            <h3 class="mode-title">Auto Loop Carousel</h3>
+            <p class="mode-desc">Autonomous presentation mode cycling through all enabled modes at intervals from 2 to 60 seconds with smooth blanking transitions between states.</p>
+            <div class="mode-tags">
+              <span class="mode-tag">Interval Timer</span>
+              <span class="mode-tag">Selective Modes</span>
+              <span class="mode-tag">Smooth Fade</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- OTA Update -->
+        <div class="mode-card">
+          <div class="mode-preview" onclick="openLightbox('assets/images/POV_Hologram_DashBoard_Firmware_OTA_Update_Widow_image-1.jpg')">
+            <img src="assets/images/POV_Hologram_DashBoard_Firmware_OTA_Update_Widow_image-1.jpg" alt="OTA Firmware Update" loading="lazy">
+          </div>
+          <div class="mode-content">
+            <span class="mode-badge">Maintenance</span>
+            <h3 class="mode-title">Wireless OTA Firmware</h3>
+            <p class="mode-desc">Dedicated `/update` web portal enabling 100% cable-free firmware flashing directly over Wi-Fi without unmounting the spinning rotor.</p>
+            <div class="mode-tags">
+              <span class="mode-tag">No Wires</span>
+              <span class="mode-tag">Bin Upload</span>
+              <span class="mode-tag">Instant Reboot</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hardware & Structure -->
+  <section class="section" id="structure">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">Physical Engineering</span>
+        <h2 class="section-title">Hardware &amp; Rotor Construction</h2>
+        <p class="section-desc">
+          Mechanical layout of the spinning armature, balanced dual-strip geometry, hall sensor bracket, and onboard battery regulation.
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <div class="gallery-img-wrap" onclick="openLightbox('assets/images/s1_1.jpg')">
+            <img src="assets/images/s1_1.jpg" alt="Rotor Assembly" loading="lazy">
+          </div>
+          <div class="gallery-body">
+            <h3 class="gallery-title">Rotor Hub &amp; Armature</h3>
+            <p class="gallery-desc">High-speed dual blade mechanical chassis balanced for 1300 RPM stability.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <div class="gallery-img-wrap" onclick="openLightbox('assets/images/s1_2.jpg')">
+            <img src="assets/images/s1_2.jpg" alt="LED Strip Mounting" loading="lazy">
+          </div>
+          <div class="gallery-body">
+            <h3 class="gallery-title">Dual Addressable LED Strips</h3>
+            <p class="gallery-desc">8 LEDs per blade aligned radially from hub to outer circumference.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <div class="gallery-img-wrap" onclick="openLightbox('assets/images/s1_3.jpg')">
+            <img src="assets/images/s1_3.jpg" alt="ESP8266 Core" loading="lazy">
+          </div>
+          <div class="gallery-body">
+            <h3 class="gallery-title">ESP8266 Microcontroller Mount</h3>
+            <p class="gallery-desc">Centrally located on the rotor to minimize rotational moment of inertia.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <div class="gallery-img-wrap" onclick="openLightbox('assets/images/s1_4.jpg')">
+            <img src="assets/images/s1_4.jpg" alt="Hall Effect Sensor" loading="lazy">
+          </div>
+          <div class="gallery-body">
+            <h3 class="gallery-title">Hall-Effect Synchronization</h3>
+            <p class="gallery-desc">A3144 magnetic sensor paired with a stator neodymium trigger magnet.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <div class="gallery-img-wrap" onclick="openLightbox('assets/images/s1_5.jpg')">
+            <img src="assets/images/s1_5.jpg" alt="Power Circuit" loading="lazy">
+          </div>
+          <div class="gallery-body">
+            <h3 class="gallery-title">Li-ion Power &amp; Divider</h3>
+            <p class="gallery-desc">18650 Li-ion battery with calibrated 10k/10k voltage divider on ADC A0.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <div class="gallery-img-wrap" onclick="openLightbox('assets/images/s1_6.jpg')">
+            <img src="assets/images/s1_6.jpg" alt="Overall POV Rig" loading="lazy">
+          </div>
+          <div class="gallery-body">
+            <h3 class="gallery-title">Complete POV Assembly</h3>
+            <p class="gallery-desc">Fully assembled standalone unit ready for desktop and presentation mounting.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Specifications Section -->
+  <section class="section" id="tech-specs">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">Engineering Documentation</span>
+        <h2 class="section-title">Technical Details &amp; Operational Specs</h2>
+        <p class="section-desc">
+          Official engineering reference, timing calculations, networking configurations, and full technology stack.
+        </p>
+      </div>
+
+      <!-- Section 1 & 6: Hardware and Technology Stack Grids -->
+      <div class="hardware-grid" style="margin-bottom: 30px;">
+        <!-- 1. Hardware Pin Configuration -->
+        <div class="specs-table-card">
+          <h3 style="margin-bottom: 16px; font-size: 19px; color: var(--cyan);">1. Hardware &amp; Pin Configuration</h3>
+          <table class="specs-table">
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Pin</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>WS2812 Strip-1</td>
+                <td><span class="pin-tag">D1 (GPIO 5)</span></td>
+                <td>8 LEDs (Blade A)</td>
+              </tr>
+              <tr>
+                <td>WS2812 Strip-2</td>
+                <td><span class="pin-tag">D2 (GPIO 4)</span></td>
+                <td>8 LEDs (Blade B)</td>
+              </tr>
+              <tr>
+                <td>Hall Effect Sensor</td>
+                <td><span class="pin-tag">D7 (GPIO 13)</span></td>
+                <td>1 pulse / revolution</td>
+              </tr>
+              <tr>
+                <td>Battery Monitoring</td>
+                <td><span class="pin-tag">A0</span></td>
+                <td>Analog voltage divider</td>
+              </tr>
+              <tr>
+                <td>High-Speed Motor</td>
+                <td><span class="pin-tag">Separate supply</span></td>
+                <td>Rotor rotation (3.5V)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 6. Language and Technology Used -->
+        <div class="specs-table-card">
+          <h3 style="margin-bottom: 16px; font-size: 19px; color: var(--indigo);">2. Technology &amp; Tool Stack</h3>
+          <table class="specs-table">
+            <thead>
+              <tr>
+                <th>Language / Tech</th>
+                <th>Purpose in Project</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong style="color: var(--text-main);">C++ (Arduino C++)</strong></td>
+                <td>Main ESP8266 firmware &amp; bitbang driver</td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--text-main);">HTML / CSS</strong></td>
+                <td>Web dashboard structure &amp; responsive UI</td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--text-main);">JavaScript</strong></td>
+                <td>Live controls, real-time status &amp; polar canvas</td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--text-main);">Arduino IDE</strong></td>
+                <td>Firmware compilation &amp; flashing</td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--text-main);">ESP8266 Web Server</strong></td>
+                <td>Lightweight on-chip HTTP server (Port 80)</td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--text-main);">NTP &amp; EEPROM</strong></td>
+                <td>Network time sync &amp; persistent flash storage</td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--text-main);">OTA (Over-The-Air)</strong></td>
+                <td>Wireless firmware upload without cables</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Wi-Fi & Network Configuration Banner -->
+      <div class="specs-table-card" style="margin-bottom: 30px;">
+        <h3 style="margin-bottom: 16px; font-size: 19px; color: var(--emerald);">3. Dual Wi-Fi Network Architecture</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-bottom: 18px;">
+          <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; padding: 18px;">
+            <div style="font-size: 13px; color: var(--cyan); font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">Station Mode (STA)</div>
+            <p style="font-size: 14px; margin-bottom: 8px;"><strong>SSID:</strong> <code>POV_Hologram_STA_MODE</code></p>
+            <p style="font-size: 14px; margin-bottom: 8px;"><strong>Password:</strong> <code>013171317</code></p>
+            <p style="font-size: 14px; margin-bottom: 8px;"><strong>Assigned IP:</strong> <code style="color: var(--cyan);">10.218.184.220</code></p>
+            <p style="font-size: 12px; color: var(--text-dim);">Connects to existing home/lab Wi-Fi network.</p>
+          </div>
+          <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; padding: 18px;">
+            <div style="font-size: 13px; color: var(--indigo); font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">Access Point Mode (AP)</div>
+            <p style="font-size: 14px; margin-bottom: 8px;"><strong>SSID:</strong> <code>POV_Hologram_AP_MODE</code></p>
+            <p style="font-size: 14px; margin-bottom: 8px;"><strong>Password:</strong> <code>013171317</code></p>
+            <p style="font-size: 14px; margin-bottom: 8px;"><strong>Default AP IP:</strong> <code style="color: var(--indigo);">192.168.4.1</code></p>
+            <p style="font-size: 12px; color: var(--text-dim);">Creates standalone field hotspot if STA connection fails.</p>
+          </div>
+        </div>
+        <p style="font-size: 13px; color: var(--text-muted);">
+          <i class="fa-solid fa-circle-info" style="color: var(--cyan); margin-right: 6px;"></i> <strong>Failover Protocol:</strong> Web Server runs on Port 80. STA connection timeout is set to 15 seconds; if router connection fails, AP mode auto-starts immediately.
+        </p>
+      </div>
+
+      <!-- Timing Calculations & Mathematics Table -->
+      <div class="specs-table-card" style="margin-bottom: 30px;">
+        <h3 style="margin-bottom: 16px; font-size: 19px; color: var(--amber);">4. RPM, LED Synchronization &amp; Timing Parameters</h3>
+        <table class="specs-table">
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Value / Calculation Formula</th>
+              <th>Technical Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Good Display RPM</strong></td>
+              <td><code>&gt;= 900 RPM</code></td>
+              <td>Stable, flicker-free persistence of vision</td>
+            </tr>
+            <tr>
+              <td><strong>Revolution Time (T_rev)</strong></td>
+              <td><code>T_rev = 60 / RPM</code></td>
+              <td>Total microsecond duration per complete rotation</td>
+            </tr>
+            <tr>
+              <td><strong>Nominal Example RPM</strong></td>
+              <td><code>1200 RPM</code></td>
+              <td>Optimal benchmark operating speed</td>
+            </tr>
+            <tr>
+              <td><strong>T_rev at 1200 RPM</strong></td>
+              <td><code>T_rev = 60 / 1200 = 0.05 s = 50 ms</code></td>
+              <td>Total duration for 360&deg; revolution</td>
+            </tr>
+            <tr>
+              <td><strong>Canvas Columns</strong></td>
+              <td><code>100 columns</code></td>
+              <td>Cylindrical display divided into 100 angular slices</td>
+            </tr>
+            <tr>
+              <td><strong>Angle per Column</strong></td>
+              <td><code>Angle = 360&deg; / 100 = 3.6&deg;</code></td>
+              <td>Precise angular slice allocation per LED update</td>
+            </tr>
+            <tr>
+              <td><strong>LED Column Time</strong></td>
+              <td><code>T_column = 50 ms / 100 = 0.5 ms (500 &mu;s)</code></td>
+              <td>Microsecond processing budget per column at 1200 RPM</td>
+            </tr>
+            <tr>
+              <td><strong>LED Latch Time</strong></td>
+              <td><code>60 &mu;s to 80 &mu;s</code></td>
+              <td>WS2812 protocol reset pulse to latch RGB data</td>
+            </tr>
+            <tr>
+              <td><strong>Hall Pulse Glitch Filter</strong></td>
+              <td><code>2 ms</code></td>
+              <td>Rejects false magnetic bounce triggers and electrical noise</td>
+            </tr>
+            <tr>
+              <td><strong>Motor Stop Detection</strong></td>
+              <td><code>1 second</code></td>
+              <td>Detects rotor shutdown and blanks LEDs to protect strip</td>
+            </tr>
+            <tr>
+              <td><strong>CPU Clock Frequency</strong></td>
+              <td><code>160 MHz</code></td>
+              <td>Overclocked core required for microsecond LED bitbang timing</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 17 Core Features Checklist -->
+      <div class="specs-table-card">
+        <h3 style="margin-bottom: 16px; font-size: 19px; color: var(--rose);">5. 17 Core Engineering Features</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; font-size: 14px;">
+          <div style="display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-check" style="color:var(--cyan);"></i> 1. Wi-Fi Web Dashboard</div>
+          <div style="display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-check" style="color:var(--cyan);"></i> 2. Custom text / sentence input</div>
+          <div style="display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-check" style="color:var(--cyan);"></i> 3. Automatic looping text scrolling</div>
+          <div style="display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-check" style="color:var(--cyan);"></i> 4. Adjustable scrolling speed</div>
+          <div style="display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-check" style="color:var(--cyan);"></i> 5. Adjustable hold time &amp; letter gap</div>
+          <div style="display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-check" style="color:var(--cyan);"></i> 6. Brightness and colour control</div>
+          <div style="display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-check" style="color:var(--cyan);"></i> 7. Horizontal / vertical flip</div>
+          <div style="display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-check" style="color:var(--cyan);"></i> 8. Display angle adjustment</div>
+          <div style="display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-check" style="color:var(--cyan);"></i> 9. Digital &amp; analog clock</div>
+          <div style="display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-check" style="color:var(--cyan);"></i> 10. Date &amp; day display</div>
+          <div style="display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-check" style="color:var(--cyan);"></i> 11. Heart &amp; smiley shapes</div>
+          <div style="display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-check" style="color:var(--cyan);"></i> 12. Automatic mode cycling</div>
+          <div style="display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-check" style="color:var(--cyan);"></i> 13. Real-time RPM monitoring</div>
+          <div style="display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-check" style="color:var(--cyan);"></i> 14. Battery percentage monitoring</div>
+          <div style="display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-check" style="color:var(--cyan);"></i> 15. Motor jitter / quality monitoring</div>
+          <div style="display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-check" style="color:var(--cyan);"></i> 16. EEPROM setting storage</div>
+          <div style="display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-check" style="color:var(--cyan);"></i> 17. OTA wireless firmware update</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Downloads Section -->
+  <section class="section" id="downloads">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">Open Source Releases</span>
+        <h2 class="section-title">Project Downloads</h2>
+        <p class="section-desc">
+          Download the complete ESP8266 firmware source code and comprehensive project report documentation.
+        </p>
+      </div>
+
+      <div class="downloads-grid">
+        <!-- INO Code Download -->
+        <div class="download-card">
+          <div class="download-icon">
+            <i class="fa-solid fa-code"></i>
+          </div>
+          <h3 class="download-title">Arduino Firmware (.ino)</h3>
+          <p class="download-desc">
+            Complete, production-tested Arduino sketch including dual-strip bitbang driver, 8 display modes, Wi-Fi web dashboard, and OTA server.
+          </p>
+          <a href="downloads/POV_Hologram_v4.ino" download="POV_Hologram_v4.ino" class="btn btn-primary" style="width: 100%; justify-content: center;">
+            <i class="fa-solid fa-download"></i> Download POV_Hologram_v4.ino
+          </a>
+          <div class="download-meta">Size: ~105 KB | Version: 4.0 | Target: ESP8266</div>
+        </div>
+
+        <!-- DOCX Report Download -->
+        <div class="download-card">
+          <div class="download-icon" style="color: var(--indigo); border-color: rgba(129, 140, 248, 0.4); background: rgba(129, 140, 248, 0.1);">
+            <i class="fa-solid fa-file-word"></i>
+          </div>
+          <h3 class="download-title">Project Report (.docx)</h3>
+          <p class="download-desc">
+            Comprehensive engineering documentation covering POV mathematics, hardware schematics, pinout tables, firmware logic, and operational modes.
+          </p>
+          <a href="downloads/POV_Hologram_Project_Report_Aryan_Khona.docx" download="POV_Hologram_Project_Report_Aryan_Khona.docx" class="btn btn-secondary" style="width: 100%; justify-content: center; border-color: var(--indigo); color: var(--indigo);">
+            <i class="fa-solid fa-download"></i> Download Project Report (.docx)
+          </a>
+          <div class="download-meta">Size: ~40 KB | Author: Aryan Khona | Format: Word</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Lightbox Modal with Zoom & Pan -->
+  <div id="lightboxModal" class="modal" onclick="closeLightboxOverlay(event)">
+    <div class="modal-toolbar">
+      <button class="modal-btn" onclick="zoomIn()" title="Zoom In"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+      <button class="modal-btn" onclick="zoomOut()" title="Zoom Out"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+      <button class="modal-btn" onclick="resetZoom()" title="Reset Zoom"><i class="fa-solid fa-rotate-left"></i></button>
+      <button class="modal-btn" onclick="closeLightbox()" title="Close"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="modal-content-wrap">
+      <img id="lightboxImg" class="modal-content" src="" alt="Enlarged View">
+    </div>
+    <div class="modal-hint">Use mouse wheel or buttons to Zoom &bull; Drag to Pan &bull; Esc to Close</div>
+  </div>
+
+  <!-- Footer with Credentials -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-brand">POV 3D HOLOGRAM SYSTEM</div>
+      <div class="footer-author" style="font-size: 16px; margin-bottom: 6px;">Developed by: Aryan Khona</div>
+      <div style="font-size: 14px; color: var(--indigo); font-weight: 500; margin-bottom: 8px;">
+        Electronics &amp; Communication Engineering | GTU Sem 5 Project 2026
+      </div>
+      <div style="font-size: 14px; margin-bottom: 16px;">
+        📧 Contact: <a href="mailto:aryankhona13@gmail.com" style="color: var(--cyan); text-decoration: none; font-weight: 600;">aryankhona13@gmail.com</a>
+      </div>
+      <p class="footer-copy">
+        Open source hardware &amp; firmware project for ESP8266 persistence of vision cylindrical displays. Hosted on GitHub Pages.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Lightbox Zoom & Pan Script -->
+  <script>
+    let scale = 1;
+    let translateX = 0;
+    let translateY = 0;
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+
+    const modal = document.getElementById('lightboxModal');
+    const img = document.getElementById('lightboxImg');
+
+    function updateTransform() {
+      img.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+    }
+
+    function openLightbox(src) {
+      img.src = src;
+      scale = 1;
+      translateX = 0;
+      translateY = 0;
+      updateTransform();
+      modal.classList.add('active');
+    }
+
+    function closeLightbox() {
+      modal.classList.remove('active');
+      scale = 1;
+      translateX = 0;
+      translateY = 0;
+      updateTransform();
+    }
+
+    function closeLightboxOverlay(e) {
+      if (e.target === modal || e.target.classList.contains('modal-content-wrap')) {
+        closeLightbox();
+      }
+    }
+
+    function zoomIn() {
+      scale = Math.min(scale + 0.3, 4.0);
+      updateTransform();
+    }
+
+    function zoomOut() {
+      scale = Math.max(scale - 0.3, 0.6);
+      if (scale <= 1) { translateX = 0; translateY = 0; }
+      updateTransform();
+    }
+
+    function resetZoom() {
+      scale = 1;
+      translateX = 0;
+      translateY = 0;
+      updateTransform();
+    }
+
+    // Wheel Zoom
+    modal.addEventListener('wheel', function(e) {
+      e.preventDefault();
+      const delta = e.deltaY > 0 ? -0.2 : 0.2;
+      scale = Math.min(Math.max(0.6, scale + delta), 4.0);
+      if (scale <= 1) { translateX = 0; translateY = 0; }
+      updateTransform();
+    }, { passive: false });
+
+    // Drag / Pan logic
+    img.addEventListener('mousedown', function(e) {
+      if (scale > 1) {
+        isDragging = true;
+        img.classList.add('dragging');
+        startX = e.clientX - translateX;
+        startY = e.clientY - translateY;
+      }
+    });
+
+    window.addEventListener('mousemove', function(e) {
+      if (isDragging) {
+        translateX = e.clientX - startX;
+        translateY = e.clientY - startY;
+        updateTransform();
+      }
+    });
+
+    window.addEventListener('mouseup', function() {
+      isDragging = false;
+      img.classList.remove('dragging');
+    });
+
+    // Keyboard support
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+      if (modal.classList.contains('active')) {
+        if (e.key === '+' || e.key === '=') zoomIn();
+        if (e.key === '-') zoomOut();
+        if (e.key === '0') resetZoom();
+      }
+    });
+  </script>
+</body>
+</html>
